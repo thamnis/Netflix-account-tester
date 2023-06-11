@@ -20,7 +20,7 @@ accounts_dict = {}
 for account in accounts_list:
     double = account.split(":")
     setter = {double[0]: double[1]}
-    accounts_dict.update(setter)
+    accounts_dict |= setter
 
 with open("accounts_2.json", "w") as f:
     json.dump(accounts_dict, f, indent=4)
