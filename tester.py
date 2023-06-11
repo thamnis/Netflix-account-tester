@@ -60,12 +60,11 @@ def test_netflix_accounts(accounts_file, tested_accounts_file):
         for account, password in accounts.items():
             if account in tested_accounts:
                 logging.info(f"Account {account} already tested")
+            elif login_to_netflix(account, password):
+                logging.info(f"Account {account} is valid")
+                tested_accounts[account] = password
             else:
-                if login_to_netflix(account, password):
-                    logging.info(f"Account {account} is valid")
-                    tested_accounts[account] = password
-                else:
-                    logging.info(f"Account {account} is invalid")
+                logging.info(f"Account {account} is invalid")
 
             num_tested += 1
 
